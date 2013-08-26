@@ -1,0 +1,3 @@
+/systags
+/bundle/*
+!/bundle/vundle/
