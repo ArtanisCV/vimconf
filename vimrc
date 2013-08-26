@@ -404,8 +404,6 @@ let privatewiki = {}								"新建privatewiki配置
 let sharewiki = {}									"新建sharewiki配置
 let sharewiki.index = 'index'
 nmap <leader>va :VimwikiAll2HTML<cr>
-""<cr>:colo wombat256mod<cr>
-""wombat256<cr>
 let g:vimwiki_list=[privatewiki,sharewiki]					" 注册vimwiki
 ",vh 快速转化为html .vb快速转化后浏览器浏览 ,va 所有转化为html
 nmap <leader>vh :Vimwiki2HTML<cr><cr>								
@@ -424,11 +422,11 @@ if has('syntax')
 	" 各不同类型的文件配色不同
 	" 保证语法高亮
   if has("ole")
-    au BufNewFile,BufRead,BufEnter,WinEnter * colo wombat256 "motus herald lucius wombat256 
-    au BufNewFile,BufRead,BufEnter,WinEnter *.wiki colo wombat256 "motus herald lucius
+    au BufNewFile,BufRead,BufEnter,WinEnter * colo night "motus herald lucius wombat256 
+    au BufNewFile,BufRead,BufEnter,WinEnter *.wiki colo night "motus herald lucius
   else 
-    au BufNewFile,BufRead,BufEnter,WinEnter * colo wombat256mod "motus herald lucius wombat256 
-    au BufNewFile,BufRead,BufEnter,WinEnter *.wiki colo wombat256mod "motus herald lucius
+    au BufNewFile,BufRead,BufEnter,WinEnter * colo night "motus herald lucius wombat256 
+    au BufNewFile,BufRead,BufEnter,WinEnter *.wiki colo night  "motus herald lucius
   endif
   syntax on
 endif

@@ -1,3 +1,2 @@
 /systags
-/bundle/*
-!/bundle/vundle/
+/bundle/
