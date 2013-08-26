@@ -18,7 +18,7 @@ VIMRC=$HOME/.vimrc
 VIMRCBAK=$HOME/.vimrc.bak
 echo $CURDIR
 
-if ! [ -a $VIMDIR/bundel/vundle ]
+if ! [ -a $VIMDIR/bundle/vundle ]
 then
     if [ -e $VIMDIR ] || [ -e $VIMRC ]
     then
@@ -54,7 +54,11 @@ then
 
     echo "Deploy finished,You can run this script to update!"
 else
+    
+    git pull
+
     echo "Please wait for five minutes! Then the vim would finish updating!"
+    
     vim -c 'BundleUpdate'
     echo "Update finished"
 fi

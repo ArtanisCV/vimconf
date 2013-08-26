@@ -3,6 +3,13 @@ Vim Conf
 
 My configure of vim and vimrc , I use it to program in C,C++,Java and web language
 
+In Linux:
+    
+    depend: astyle cscope ctags doxygen indent
+
+In Windows:
+    
+    depend: cscope.exe ctags.exe doxygen indent
 
 ###------------------------------------------------------------------------
 
