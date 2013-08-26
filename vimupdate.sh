@@ -42,7 +42,10 @@ then
     
     git status
     
-    ###procress patch
+    ###procress patch 
+    ###In the future use the file.patch instead of these.
+    ###
+    ###
     if [ -e $VIMDIR/bundle/doxygen-support.vim/plugin/doxygen-support.vim ]
     then
         cp -rf patch/doxygen-support.vim $VIMDIR/bundle/doxygen-support.vim/plugin/doxygen-support.vim
@@ -51,31 +54,26 @@ then
     then
         cp -rf patch/Template.vim $VIMDIR/bundle/QuickTemplate/plugin/Template.vim
     fi
-    if [ -e $VIMDIR/bundle/winmanager/plugin/winmanager.vim ]
+    if [ -e $VIMDIR/bundle/bufexplorer.zip/plugin/bufexplorer.vim ]
     then
-        cp -rf patch/winmanager.vim $VIMDIR/bundle/winmanager/plugin/winmanager.vim 
+        cp -rf patch/bufexplorer.vim $VIMDIR/bundle/bufexplorer.zip/plugin/bufexplorer.vim
     fi
     echo -e 'Check installed, and change color to wombat256!'
     
-    vim -c "%s/night/wombat256/g|w!"
+    vim -c "%s/night/wombat256/g|w!" $VIMRC
     
     echo -e  "Deploy finished , You can run this script to update!"
 
     cd $CURDIR
 else
-    echo -e 'Start updating!'
-    
     cd $VIMDIR
+    echo -e 'Start updating!'
     git pull
-    
-    echo -e "Please wait for five minutes! Then the vim would finish updating!"
-    
+    echo -e "Please wait for five minutes! Then the vim would finish updating!\n"
     vim -c 'BundleUpdate'
-    
-    echo -e "Update finished"
+    echo -e "Update finished\n"
     
     git status
-
     cd $CURDIR
 fi
 exit

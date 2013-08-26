@@ -5,29 +5,58 @@ My configure of vim and vimrc , I use it to program in C,C++,Java and web langua
 
 In Linux:
     
-    depend: astyle cscope ctags doxygen indent
+    depend: astyle cscope ctags doxygen indent git
 
 In Windows:
     
-    depend: cscope.exe ctags.exe doxygen indent
+    depend: cscope.exe ctags.exe doxygen indent git.exe
 
-###------------------------------------------------------------------------
 
-###Usage : Install and update
+####Install and Download
+
+
+####Download
+
+    git clone http://github.com/turing1988/vimconf.git
 
 ####Install
 
-1. git clone http://github.com/turing1988/vimconf.git
+------------
 
-2. Enter in the $HOME/.vim , run ./vimupdate.sh
+In Linux:
+
+First run it , Enter in the directory vimcomf/, run 
+ 
+    ./vimupdate.sh 
+
+Your conf of vim will be backup in $HOME.vim.bak and $HOME.vimrc.bak .
+
+When vim cmd `BundleUpdate` is over . input `:qa!` to exit vim
+
+Then new conf of vim !
+
+-----------
+In Windows
+
+First run it , open the `CMD.EXE` 
+
+    ./vimdupate.bat
+
+Your conf of vim will be backup in $HOME.vim.bak and $HOME.vimrc.bak .
+
+When vim cmd `BundleUpdate` is over . input `:qa!` to exit vim
+
+Then new conf of vim !
+
 
 ####Update
 
-1. Enter in the $HOME/.vim , run ./vimupdate.sh
+In Linux :
 
-###------------------------------------------------------------------------
+Enter in the $HOME/.vim , run
+ 
+     ./vimupdate.sh
 
-After installing and updating , you will find these:
 
 ####1). plugins
 
@@ -135,11 +164,9 @@ After installing and updating , you will find these:
 
    F11:fullscreen
 
-###------------------------------------------------------------------------
 
 ##More
 
    [My Vimwiki](http://mturing.com/wiki/wikihtml/Vim%E9%85%8D%E7%BD%AE%E5%A4%87%E6%B3%A8.html)
 
    [My Blog](http://mturing.com)
-
