@@ -30,11 +30,17 @@ then
     cp -rf $CURDIR $VIMDIR
     cp -rf $CURVIMRC $VIMRC
     cd $VIMDIR
-    echo 'Start , And init and update submodule'
+    
+    echo -e 'Start to clone bundle '
     git clone  https://github.com/gmarik/vundle.git $VIMDIR/bundle/vundle
-    echo "Please wait for five minutes! Then the vim would have been installed !"
+    
+    echo -e  "Please wait for five minutes! Then the vim would have been installed !"
+    
     sleep 5
+   
     vim -c 'BundleUpdate'
+    
+    git status
     
     ###procress patch
     if [ -e $VIMDIR/bundle/doxygen-support.vim/plugin/doxygen-support.vim ]
@@ -49,17 +55,27 @@ then
     then
         cp -rf patch/winmanager.vim $VIMDIR/bundle/winmanager/plugin/winmanager.vim 
     fi
-    echo 'Check installed , and change color to wombat256!'
-    vim -c "%s/night/wombat256/g|w!"
-
-    echo "Deploy finished,You can run this script to update!"
-else
+    echo -e 'Check installed, and change color to wombat256!'
     
-    git pull
+    vim -c "%s/night/wombat256/g|w!"
+    
+    echo -e  "Deploy finished , You can run this script to update!"
 
-    echo "Please wait for five minutes! Then the vim would finish updating!"
+    cd $CURDIR
+else
+    echo -e 'Start updating!'
+    
+    cd $VIMDIR
+    git pull
+    
+    echo -e "Please wait for five minutes! Then the vim would finish updating!"
     
     vim -c 'BundleUpdate'
-    echo "Update finished"
+    
+    echo -e "Update finished"
+    
+    git status
+
+    cd $CURDIR
 fi
 exit
