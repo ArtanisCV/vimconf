@@ -1,15 +1,4 @@
 #!/bin/bash
-
-cat <<eof
-In Linux:
-    
-    depend: astyle cscope ctags doxygen indent
-
-In Windows:
-    
-    depend: cscope.exe ctags.exe doxygen indent
-eof
-
 CURDIR=$PWD
 CURVIMRC=$PWD/vimrc
 VIMDIR=$HOME/.vim
@@ -43,21 +32,34 @@ then
     git status
     
     ###procress patch 
-    ###In the future use the file.patch instead of these.
+    ###In the future use the diff and patch instead of these.
     ###
     ###
-    if [ -e $VIMDIR/bundle/doxygen-support.vim/plugin/doxygen-support.vim ]
+    
+    PATCH1=$VIMDIR/bundle/doxygen-support.vim/plugin/doxygen-support.vim 
+    if [ -e $PATCH1 ]
     then
-        cp -rf patch/doxygen-support.vim $VIMDIR/bundle/doxygen-support.vim/plugin/doxygen-support.vim
+        cp -rf patch/doxygen-support.vim $PATCH1
     fi
-    if [ -e $VIMDIR/bundle/QuickTemplate/plugin/Template.vim ]
+
+    PATCH2=$VIMDIR/bundle/QuickTemplate/plugin/Template.vim
+    if [ -e $PATCH2 ]
     then
-        cp -rf patch/Template.vim $VIMDIR/bundle/QuickTemplate/plugin/Template.vim
+        cp -rf patch/Template.vim $PATCH2 
     fi
-    if [ -e $VIMDIR/bundle/bufexplorer.zip/plugin/bufexplorer.vim ]
+
+    PATCH3=$VIMDIR/bundle/bufexplorer.zip/plugin/bufexplorer.vim
+    if [ -e $PATCH3 ]
     then
-        cp -rf patch/bufexplorer.vim $VIMDIR/bundle/bufexplorer.zip/plugin/bufexplorer.vim
+        cp -rf patch/bufexplorer.vim $PATCH3
     fi
+    
+    PATCH4=$VIMDIR/bundle/Dictionary/plugin/dictionary.vim
+    if [ -e $PATCH4 ]
+    then
+        cp -rf patch/dictionary.vim $PATCH4 
+    fi
+    
     echo -e 'Check installed, and change color to wombat256!'
     
     vim -c "%s/night/wombat256/g|w!" $VIMRC
@@ -74,6 +76,7 @@ else
     echo -e "Update finished\n"
     
     git status
+
     cd $CURDIR
 fi
 exit

@@ -470,6 +470,7 @@ Bundle 'turing1988/ColorSamplerPack'
 Bundle 'ervandew/supertab'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'mattn/emmet-vim'
+Bundle 'jkeylu/vimdoc_cn'
 
 Bundle 'DrawIt'
 Bundle 'DoxyGen-Syntax'

@@ -1,64 +1,86 @@
 Vim Conf
 =======
 
-My configure of vim and vimrc , I use it to program in C,C++,Java and web language
+The configure repo of vim and vimrc is based the plugin bundle adn git .
 
-In Linux:
+It is cross-platform , include Windows and *nix , you can deploy it quickly .
+
+It is mainly for C,C++,Java and web language . 
+
+---
+###Depend
+In *nix and Windows     
     
-    depend: astyle cscope ctags doxygen indent git
+    depend: 
+        astyle 
+        cscope 
+        ctags 
+        doxygen
+        libiconv
 
-In Windows:
-    
-    depend: cscope.exe ctags.exe doxygen indent git.exe
+###Install and Update
 
-
-####Install and Download
-
-
-####Download
+**Download**
 
     git clone http://github.com/turing1988/vimconf.git
 
-####Install
+**Deploy**
 
-------------
-
-In Linux:
-
-First run it , Enter in the directory vimcomf/, run 
+In *nix  , First run it, Enter in the directory vimcomf/ , run 
  
     ./vimupdate.sh 
-
-Your conf of vim will be backup in $HOME.vim.bak and $HOME.vimrc.bak .
-
-When vim cmd `BundleUpdate` is over . input `:qa!` to exit vim
-
-Then new conf of vim !
-
------------
-In Windows
-
-First run it , open the `CMD.EXE` 
+    
+In Windows , First run it , open the `CMD.EXE` , run
 
     ./vimdupate.bat
 
-Your conf of vim will be backup in $HOME.vim.bak and $HOME.vimrc.bak .
+After it , your configure of vim will be backuped in $HOME.vim.bak and $HOME.vimrc.bak .
 
-When vim cmd `BundleUpdate` is over . input `:qa!` to exit vim
+After vim cmd `BundleUpdate` runs over , Input `:qa!` to exit vim
 
-Then new conf of vim !
+Then new conf of vim is comming !
 
 
-####Update
+**Update**
 
-In Linux :
-
-Enter in the $HOME/.vim , run
+In *nix  , Enter in the directory vimcomf/ , run 
  
-     ./vimupdate.sh
+    ./vimupdate.sh 
+    
+In Windows , open the `CMD.EXE` , run
+
+    ./vimdupate.bat
+
+--- 
+#### Keybind
+
+   ,:leader key
+
+   F1:help
+
+   F2:generate tags and cscope
+
+   F3:winmanager toggle
+
+   F4:Taglist or Tagbar
+
+   F5:lookupfile
+
+   F6:Fencview
+
+   F7:style
+
+   F8:checksynatx
+
+   F10:project
+   
+   Ctrl-F9: Complie with gcc
+
+   F11:fullscreen
 
 
-####1). plugins
+
+####Plugins included
 
    'gmarik/vundle'
 
@@ -139,34 +161,10 @@ Enter in the $HOME/.vim , run
    'javascript.vim'
 
    'javacomplete'
+   
 
-#### 2).keybinds
+###More
 
-   ,:leader key
+  *  [My Vimwiki](http://mturing.com/wiki/wikihtml/Vim%E9%85%8D%E7%BD%AE%E5%A4%87%E6%B3%A8.html)
 
-   F1:help
-
-   F2:generate tags and cscope
-
-   F3:winmanager toggle
-
-   F4:Taglist or Tagbar
-
-   F5:lookupfile
-
-   F6:Fencview
-
-   F7:style
-
-   F8:checksynatx
-
-   F10:project
-
-   F11:fullscreen
-
-
-##More
-
-   [My Vimwiki](http://mturing.com/wiki/wikihtml/Vim%E9%85%8D%E7%BD%AE%E5%A4%87%E6%B3%A8.html)
-
-   [My Blog](http://mturing.com)
+  *  [My Blog](http://mturing.com)
