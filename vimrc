@@ -470,7 +470,6 @@ Bundle 'turing1988/ColorSamplerPack'
 Bundle 'ervandew/supertab'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'mattn/emmet-vim'
-Bundle 'jkeylu/vimdoc_cn'
 
 Bundle 'DrawIt'
 Bundle 'DoxyGen-Syntax'
@@ -506,6 +505,11 @@ Bundle 'java.vim'
 Bundle 'javascript.vim'
 Bundle 'javacomplete'
 
+"vim_cn"
+Bundle 'vimcn/vimwiki.vim.cnx'
+Bundle 'vimcn/tagbar.cnx'
+Bundle 'vimcn/taglist.vim.cnx'
+Bundle 'jkeylu/vimdoc_cn'
 
 filetype plugin indent on
 "mark.vim

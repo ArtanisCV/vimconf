@@ -161,7 +161,14 @@ In Windows , open the `CMD.EXE` , run
    'javascript.vim'
 
    'javacomplete'
-   
+
+   'vimcn/vimwiki.vim.cnx'
+
+   'vimcn/tagbar.cnx'
+
+   'vimcn/taglist.vim.cnx'
+
+   'jkeylu/vimdoc_cn'
 
 ###More
 
