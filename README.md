@@ -32,7 +32,7 @@ In *nix  , First run it, Enter in the directory vimcomf/ , run
     
 In Windows , First run it , open the `CMD.EXE` , run
 
-    ./vimdupate.bat
+    ./vimupate.bat
 
 After it , your configure of vim will be backuped in $HOME.vim.bak and $HOME.vimrc.bak .
 
@@ -49,7 +49,7 @@ In *nix  , Enter in the directory vimcomf/ , run
     
 In Windows , open the `CMD.EXE` , run
 
-    ./vimdupate.bat
+    ./vimupate.bat
 
 --- 
 #### Keybind
