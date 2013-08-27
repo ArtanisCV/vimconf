@@ -21,6 +21,7 @@ then
     cd $VIMDIR
     
     echo -e 'Start to clone bundle '
+    mkdir $VIMDIR/bundle
     git clone  https://github.com/gmarik/vundle.git $VIMDIR/bundle/vundle
     
     echo -e  "Please wait for five minutes! Then the vim would have been installed !"
