@@ -1,9 +1,9 @@
 if has("ole")
 	" 自动载入VIM配置文件
-  autocmd! bufwritepost _vimrc source %
-  autocmd! bufwritepost .vimrc source % 
+  	autocmd! bufwritepost _vimrc source %
+  	autocmd! bufwritepost .vimrc source % 
 	set guifont=Consolas:h14:cANSI
-  set rtp+=$HOME/.vim/
+  	set rtp+=$HOME/.vim/*
 else
 	autocmd! bufwritepost .vimrc source % 
 	set guifont=Consolas\ 13
@@ -114,28 +114,26 @@ function! Do_CsTag()
 			if has('ole')
 				silent! execute "!gentags.bat"
 			else
-				silent! execute "!ctags -R --recurse=yes --c-types=+p --fields=+lS $(pwd)/"
-				""elseif  &filetype == 'cpp'
-				silent! execute "!ctags -R --recurse=yes --c++-kinds=+p --fields=+iaS --extra=+q $(pwd)/"
+				if ( &filetype == 'c' ) || ( &filetype == 'cpp' )
+					silent! execute "!ctags -R --recurse=yes --c-types=+p --fields=+lS $(pwd)/"
+					silent! execute "!ctags -R --recurse=yes --c++-kinds=+p --fields=+iaS --extra=+q $(pwd)/"
+				else
+					silent! execute "!ctags -R --recurse=yes $(pwd)/"
+				endif
 			endif
 			set tags+=./tags,tags
 		endif
 	endif
-
 	"cscope"
 	if (executable('cscope') && has("cscope") )
-		if has('ole')
-			silent! execute "!taskkill /F /IM cscope.exe"
-		else
-			silent! execute "cs kill -1"
-		endif
+		silent! execute "cs kill -1"
 		if ( filereadable("../cscope.out") )
 			if has('ole')
 				silent! execute "let NOWDIR=getcwd()|cd ../"
 				silent! execute "!gencscope.bat"
 				silent! execute "cd NOWDIR"
 			else
-				silent! execute "!NOWDIR=$(pwd);cd ../;find $(pwd)/  -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' >$(pwd)/cscope.files;cscope  -Rbq ;cd $NOWDIR"
+        silent! execute "!NOWDIR=$(pwd);cd ../;find $(pwd)/  -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' -o -name '*.js' -o -name '*.html' >$(pwd)/cscope.files;cscope  -Rbqk 2>/dev/null >&1 ;cd $NOWDIR"
 			endif
 			execute "normal :"
 			set nocsverb
@@ -145,8 +143,8 @@ function! Do_CsTag()
 			if has('ole')
 				silent! execute "!gencscope.bat"
 			else
-				silent! execute "!find $(pwd)/  -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' >$(pwd)/cscope.files"
-				silent! execute "!cscope -Rbq "
+				silent! execute "!find $(pwd)/  -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' -o -name '*.js' -o -name '*.html' >$(pwd)/cscope.files"
+				silent! execute "!cscope -Rbqk 2>/dev/null >&1 "
 			endif
 			execute "normal :"
 			set nocsverb
@@ -154,7 +152,7 @@ function! Do_CsTag()
 			set csverb
 		endif
 	endif
-
+	set csprg=/usr/bin/cscope
 	set cst    "同时查找tags cscope
 	set csto=1 "优先查找tags
 endf
@@ -292,8 +290,7 @@ endif
 " =====================
 " 修改后自动更新tags cscope.out
 " =====================
-au bufwritepost *.c,*.cpp,*.h,*.java call Do_CsTag()
-"set cscopequickfix=s-,c-,d-,i-,t-,e-,g0
+au bufwritepost *.c,*.cpp,*.h,*.java,*.html,*.js,*.php call Do_CsTag()  
 "nmap <C-t> :colder<CR>:cc<CR>
 
 " =====================
@@ -303,6 +300,7 @@ au bufwritepost *.c,*.cpp,*.h,*.java call Do_CsTag()
 "设置','为leader快捷键
 let mapleader = ","
 let g:mapleader = ","
+let g:loaded_autoload_cscope = 0
 let g:C_LineEndCommColDefault    = 80
 let g:Templates_MapInUseWarn = 0		"cvim的配置
 
@@ -422,11 +420,11 @@ if has('syntax')
 	" 各不同类型的文件配色不同
 	" 保证语法高亮
   if has("ole")
-    au BufNewFile,BufRead,BufEnter,WinEnter * colo night "motus herald lucius wombat256 
-    au BufNewFile,BufRead,BufEnter,WinEnter *.wiki colo night "motus herald lucius
+    au BufNewFile,BufRead,BufEnter,WinEnter * colo default "motus herald lucius wombat256 
+    au BufNewFile,BufRead,BufEnter,WinEnter *.wiki colo default "motus herald lucius
   else 
-    au BufNewFile,BufRead,BufEnter,WinEnter * colo night "motus herald lucius wombat256 
-    au BufNewFile,BufRead,BufEnter,WinEnter *.wiki colo night  "motus herald lucius
+    au BufNewFile,BufRead,BufEnter,WinEnter * colo default "motus herald lucius wombat256 
+    au BufNewFile,BufRead,BufEnter,WinEnter *.wiki colo default  "motus herald lucius
   endif
   syntax on
 endif
