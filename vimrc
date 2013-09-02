@@ -1,4 +1,4 @@
-if has("ole")
+if has("win32")
 	" 自动载入VIM配置文件
   	autocmd! bufwritepost _vimrc source %
   	autocmd! bufwritepost .vimrc source % 
@@ -100,26 +100,23 @@ function! Do_CsTag()
 	"ctags"
 	if(executable('ctags'))
 		if filereadable("../tags")
-			if has('ole')
+      if has('win32')
 				silent! execute "let NOWDIR=getcwd()|cd ../"
 				silent! execute "!gentags.bat"
 				silent! execute "cd NOWDIR"
 			else
-				silent! execute "!NOWDIR=$(pwd);cd ../;ctags -R --recurse=yes --c-types=+p --fields=+lS $(pwd)/;cd $NOWDIR"
-				""elseif  &filetype == 'cpp'
-				silent! execute "!NOWDIR=$(pwd);cd ../;ctags -R --recurse=yes --c++-kinds=+p --fields=+iaS --extra=+q $(pwd)/;cd $NOWDIR"
+				silent! execute "!NOWDIR=$(pwd);cd ../;ctags -R  --c-types=+p --fields=+lS $(pwd)/;cd $NOWDIR"
+				silent! execute "!NOWDIR=$(pwd);cd ../;ctags -R  --c++-kinds=+p --fields=+iaS --extra=+q $(pwd)/;cd $NOWDIR"
+				silent! execute "!NOWDIR=$(pwd);cd ../;ctags -R  --extra=+q $(pwd)/;cd $NOWDIR"
 			endif
 			set tags+=../tags
 		else
-			if has('ole')
+			if has('win32')
 				silent! execute "!gentags.bat"
 			else
-				if ( &filetype == 'c' ) || ( &filetype == 'cpp' )
 					silent! execute "!ctags -R --recurse=yes --c-types=+p --fields=+lS $(pwd)/"
 					silent! execute "!ctags -R --recurse=yes --c++-kinds=+p --fields=+iaS --extra=+q $(pwd)/"
-				else
-					silent! execute "!ctags -R --recurse=yes $(pwd)/"
-				endif
+        			silent! execute "!ctags -R --extra=+q $(pwd)/"
 			endif
 			set tags+=./tags,tags
 		endif
@@ -128,7 +125,7 @@ function! Do_CsTag()
 	if (executable('cscope') && has("cscope") )
 		silent! execute "cs kill -1"
 		if ( filereadable("../cscope.out") )
-			if has('ole')
+			if has('win32')
 				silent! execute "let NOWDIR=getcwd()|cd ../"
 				silent! execute "!gencscope.bat"
 				silent! execute "cd NOWDIR"
@@ -140,7 +137,7 @@ function! Do_CsTag()
 			exec "cs add ../cscope.out"
 			set csverb
 		else
-			if has('ole')
+			if has('win32')
 				silent! execute "!gencscope.bat"
 			else
 				silent! execute "!find $(pwd)/  -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' -o -name '*.js' -o -name '*.html' >$(pwd)/cscope.files"
@@ -152,9 +149,6 @@ function! Do_CsTag()
 			set csverb
 		endif
 	endif
-	set csprg=/usr/bin/cscope
-	set cst    "同时查找tags cscope
-	set csto=1 "优先查找tags
 endf
 
 "tag浏览设置"
@@ -252,10 +246,12 @@ set autochdir       " 自动切换当前目录为当前文件所在的目录
 if has("multi_byte")
 	set encoding=utf-8
 	let &termencoding=&encoding 
-  au BufRead * set fileencodings=utf-8,cp936,gb2312,gbk,gb18030,ucs-2le,chinese,utf-8
+  set fileencodings=utf-8,cp936,gb2312,gbk,gb18030,ucs-2le,chinese
+  set fileformats=unix,dos
+  au BufRead * set fileencodings=utf-8,cp936,gb2312,gbk,gb18030,ucs-2le,chinese
   au BufRead * set fileformats=unix,dos
 	""vim编码猜测列表
-	if has('ole')
+	if has('win32')
 		source $VIMRUNTIME/delmenu.vim		" 处理consle输出乱码
 		source $VIMRUNTIME/menu.vim
 	endif
@@ -300,7 +296,6 @@ au bufwritepost *.c,*.cpp,*.h,*.java,*.html,*.js,*.php call Do_CsTag()
 "设置','为leader快捷键
 let mapleader = ","
 let g:mapleader = ","
-let g:loaded_autoload_cscope = 0
 let g:C_LineEndCommColDefault    = 80
 let g:Templates_MapInUseWarn = 0		"cvim的配置
 
@@ -320,6 +315,29 @@ map ca :Calendar<cr>
 " 自动生成cscope与tags
 let Tlist_Use_Right_Window=1        " 把方法列表放在屏幕的右侧
 map <F2> :call Do_CsTag() <cr>:redraw!<cr>
+if filereadable("../tags") 
+  set tags+=../tags
+else
+  set tags+=./tags,tags
+endif
+"cscope"
+if (executable('cscope') && has("cscope") )
+  silent! execute "cs kill -1"
+  if ( filereadable("../cscope.out") )
+    set nocsverb
+    exec "cs add ../cscope.out"
+    set csverb
+  else
+    set nocsverb
+    exec "cs add cscope.out"
+    set csverb
+  endif
+endif
+set cst    "同时查找tags cscope
+set csto=1 "优先查找tags
+
+
+
 "cscope配置"
 "s  查找C语言符号，函数 宏 枚举     g  查找选中量定义的位置，类似ctags的功能
 "c  查找调用本函数的函数            t  查找指定的字符串
@@ -419,7 +437,7 @@ if has('syntax')
 	au BufNewFile,BufRead *.doxygen setfiletype doxygen
 	" 各不同类型的文件配色不同
 	" 保证语法高亮
-  if has("ole")
+  if has("win32")
     au BufNewFile,BufRead,BufEnter,WinEnter * colo default "motus herald lucius wombat256 
     au BufNewFile,BufRead,BufEnter,WinEnter *.wiki colo default "motus herald lucius
   else 
@@ -489,7 +507,6 @@ Bundle 'PHP-dictionary'
 Bundle 'OmniCppComplete'
 
 Bundle 'a.vim'
-Bundle 'autoload_cscope.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'doxygen-support.vim'
 Bundle 'echofunc.vim'
