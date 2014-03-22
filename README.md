@@ -92,14 +92,10 @@ In Windows , open the `CMD.EXE` , run
 
    'turing1988/ColorSamplerPack'
 
-   'ervandew/supertab'
-
    'plasticboy/vim-markdown'
 
    'mattn/emmet-vim'
-
-   'DrawIt'
-
+   
    'DoxyGen-Syntax'
 
    'LargeFile'
@@ -116,8 +112,6 @@ In Windows , open the `CMD.EXE` , run
 
    'calendar.vim--Matsumoto'
 
-   'code_complete'
-
    'Color-Scheme-Explorer'
 
    'Dictionary'
@@ -130,13 +124,7 @@ In Windows , open the `CMD.EXE` , run
 
    'winmanager'
 
-   'PHP-dictionary'
-
-   'OmniCppComplete'
-
    'a.vim'
-
-   'autoload_cscope.vim'
 
    'bufexplorer.zip'
 
@@ -148,19 +136,11 @@ In Windows , open the `CMD.EXE` , run
 
    'fontsize.vim'
 
-   'matchit.zip'
-
    'surround.vim'
 
    'TransferChinese.vim'
 
    'taglist.vim'
-
-   'java.vim'
-
-   'javascript.vim'
-
-   'javacomplete'
 
    'vimcn/vimwiki.vim.cnx'
 
@@ -169,6 +149,8 @@ In Windows , open the `CMD.EXE` , run
    'vimcn/taglist.vim.cnx'
 
    'jkeylu/vimdoc_cn'
+
+   'Valloric/YouCompleteMe'
 
 ###More
 
