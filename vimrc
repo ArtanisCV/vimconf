@@ -272,11 +272,11 @@ endif
 " AutoCmd 自动运行
 " =====================
 if has("autocmd") " 括号自动补全
-	inoremap ( ()<Esc>i
+""	inoremap ( ()<Esc>i
 	inoremap [ []<Esc>i
 	inoremap { {<CR>}<Esc>O
 	autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
-	inoremap ) <c-r>=ClosePair(')')<CR>
+""	inoremap ) <c-r>=ClosePair(')')<CR>
 	inoremap ] <c-r>=ClosePair(']')<CR>
 	inoremap } <c-r>=CloseBracket()<CR>
 	inoremap " <c-r>=QuoteDelim('"')<CR>
@@ -483,11 +483,11 @@ Bundle 'tomtom/checksyntax_vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'blak3mill3r/c.vim'
 Bundle 'turing1988/ColorSamplerPack'
-Bundle 'ervandew/supertab'
+""Bundle 'ervandew/supertab'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'mattn/emmet-vim'
 
-Bundle 'DrawIt'
+""Bundle 'DrawIt'
 Bundle 'DoxyGen-Syntax'
 Bundle 'LargeFile'
 Bundle 'lookupfile'
@@ -496,15 +496,15 @@ Bundle 'QuickTemplate'
 Bundle 'cecutil'
 Bundle 'genutils'
 Bundle 'calendar.vim--Matsumoto'
-Bundle 'code_complete'
+"Bundle 'code_complete'
 Bundle 'Color-Scheme-Explorer'
 Bundle 'Dictionary'
 Bundle 'Mark'
 Bundle 'Tagbar'
 Bundle 'vimwiki'
 Bundle 'winmanager'
-Bundle 'PHP-dictionary'
-Bundle 'OmniCppComplete'
+"Bundle 'PHP-dictionary'
+"Bundle 'OmniCppComplete'
 
 Bundle 'a.vim'
 Bundle 'bufexplorer.zip'
@@ -512,13 +512,13 @@ Bundle 'doxygen-support.vim'
 Bundle 'echofunc.vim'
 Bundle 'FencView.vim'
 Bundle 'fontsize.vim'
-Bundle 'matchit.zip'
+"Bundle 'matchit.zip'
 Bundle 'surround.vim'
 Bundle 'TransferChinese.vim'
 Bundle 'taglist.vim'
-Bundle 'java.vim'
-Bundle 'javascript.vim'
-Bundle 'javacomplete'
+"Bundle 'java.vim'
+"Bundle 'javascript.vim'
+"Bundle 'javacomplete'
 
 "vim_cn"
 Bundle 'vimcn/vimwiki.vim.cnx'
@@ -526,6 +526,7 @@ Bundle 'vimcn/tagbar.cnx'
 Bundle 'vimcn/taglist.vim.cnx'
 Bundle 'jkeylu/vimdoc_cn'
 
+Bundle 'Valloric/YouCompleteMe'
 filetype plugin indent on
 "mark.vim
 " vim: set et sw=4 ts=4 sts=4 fdm=marker ft=vim ff=unix fenc=utf8:
