@@ -53,104 +53,75 @@ In Windows , open the `CMD.EXE` , run
 
 --- 
 #### Keybind
+ 'gmarik/vundle'
 
-   ,:leader key
+ 'tomtom/checksyntax_vim'
 
-   F1:help
+ 'scrooloose/nerdtree'
 
-   F2:generate tags and cscope
+ 'blak3mill3r/c.vim'
 
-   F3:winmanager toggle
+ 'turing1988/ColorSamplerPack'
 
-   F4:Taglist or Tagbar
+ 'ervandew/supertab'
 
-   F5:lookupfile
+ 'plasticboy/vim-markdown'
 
-   F6:Fencview
+ 'mattn/emmet-vim'
 
-   F7:style
+ 'DoxyGen-Syntax'
 
-   F8:checksynatx
+ 'LargeFile'
 
-   F10:project
-   
-   Ctrl-F9: Complie with gcc
+ 'lookupfile'
 
-   F11:fullscreen
+ 'xptemplate'
 
+ 'cecutil'
 
+ 'genutils'
 
-####Plugins included
+ 'calendar.vim--Matsumoto'
 
-   'gmarik/vundle'
+ 'code_complete'
 
-   'tomtom/checksyntax_vim'
+ 'Color-Scheme-Explorer'
 
-   'scrooloose/nerdtree'
+ 'Mark'
 
-   'blak3mill3r/c.vim'
+ 'Tagbar'
 
-   'turing1988/ColorSamplerPack'
+ 'vimwiki'
 
-   'plasticboy/vim-markdown'
+ 'winmanager'
 
-   'mattn/emmet-vim'
-   
-   'DoxyGen-Syntax'
+ 'OmniCppComplete'
 
-   'LargeFile'
+ 'a.vim'
 
-   'lookupfile'
+ 'bufexplorer.zip'
 
-   'xptemplate'
+ 'doxygen-support.vim'
 
-   'QuickTemplate'
+ 'FencView.vim'
 
-   'cecutil'
+ 'fontsize.vim'
 
-   'genutils'
+ 'surround.vim'
 
-   'calendar.vim--Matsumoto'
+ 'taglist.vim'
 
-   'Color-Scheme-Explorer'
+ 'vimcn/vimwiki.vim.cnx'
 
-   'Dictionary'
+ 'vimcn/tagbar.cnx'
 
-   'Mark'
+ 'vimcn/taglist.vim.cnx'
 
-   'Tagbar'
+ 'jkeylu/vimdoc_cn'
 
-   'vimwiki'
+ 'Valloric/ListToggle'
 
-   'winmanager'
-
-   'a.vim'
-
-   'bufexplorer.zip'
-
-   'doxygen-support.vim'
-
-   'echofunc.vim'
-
-   'FencView.vim'
-
-   'fontsize.vim'
-
-   'surround.vim'
-
-   'TransferChinese.vim'
-
-   'taglist.vim'
-
-   'vimcn/vimwiki.vim.cnx'
-
-   'vimcn/tagbar.cnx'
-
-   'vimcn/taglist.vim.cnx'
-
-   'jkeylu/vimdoc_cn'
-
-   'Valloric/YouCompleteMe'
+ 'scrooloose/syntastic'
 
 ###More
 

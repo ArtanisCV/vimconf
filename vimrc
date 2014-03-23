@@ -527,44 +527,73 @@ filetype off
 set rtp+=$HOME/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
+
 Bundle 'tomtom/checksyntax_vim'
+
 Bundle 'scrooloose/nerdtree'
+
 Bundle 'blak3mill3r/c.vim'
+
 Bundle 'turing1988/ColorSamplerPack'
+
 Bundle 'ervandew/supertab'
+
 Bundle 'plasticboy/vim-markdown'
+
 Bundle 'mattn/emmet-vim'
 
 Bundle 'DoxyGen-Syntax'
+
 Bundle 'LargeFile'
+
 Bundle 'lookupfile'
+
 Bundle 'xptemplate'
+
 Bundle 'cecutil'
+
 Bundle 'genutils'
+
 Bundle 'calendar.vim--Matsumoto'
+
 Bundle 'code_complete'
+
 Bundle 'Color-Scheme-Explorer'
+
 Bundle 'Mark'
+
 Bundle 'Tagbar'
+
 Bundle 'vimwiki'
+
 Bundle 'winmanager'
+
 Bundle 'OmniCppComplete'
 
 Bundle 'a.vim'
+
 Bundle 'bufexplorer.zip'
+
 Bundle 'doxygen-support.vim'
+
 Bundle 'FencView.vim'
+
 Bundle 'fontsize.vim'
+
 Bundle 'surround.vim'
+
 Bundle 'taglist.vim'
 
-"vim_cn"
 Bundle 'vimcn/vimwiki.vim.cnx'
+
 Bundle 'vimcn/tagbar.cnx'
+
 Bundle 'vimcn/taglist.vim.cnx'
+
 Bundle 'jkeylu/vimdoc_cn'
 
 Bundle 'Valloric/ListToggle'
+
 Bundle 'scrooloose/syntastic'
 filetype plugin indent on
 "mark.vim
