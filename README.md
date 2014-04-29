@@ -15,7 +15,6 @@ In *nix and Windows
         astyle 
         cscope 
         ctags 
-        doxygen
         libiconv
 
 ###Install and Update
@@ -69,8 +68,6 @@ In Windows , open the `CMD.EXE` , run
 
  'mattn/emmet-vim'
 
- 'DoxyGen-Syntax'
-
  'LargeFile'
 
  'lookupfile'
@@ -101,8 +98,6 @@ In Windows , open the `CMD.EXE` , run
 
  'bufexplorer.zip'
 
- 'doxygen-support.vim'
-
  'FencView.vim'
 
  'fontsize.vim'
@@ -122,6 +117,8 @@ In Windows , open the `CMD.EXE` , run
  'Valloric/ListToggle'
 
  'scrooloose/syntastic'
+
+ 'turing1988/Conque-Shell'
 
 ###More
 

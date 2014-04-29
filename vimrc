@@ -185,6 +185,8 @@ nmap <leader>tc :tabclose<cr>
 " =====================================================
 let g:C_LineEndCommColDefault    = 80
 let g:Templates_MapInUseWarn = 0		"cvim的配置
+"let g:C_MapLeader = '\'
+"let g:C_Ctrl_j_Mode = 'j' "跳转至下一补全处，例如+argumentlist+
 
 " =====================================================
 " 设置OmniCpp 主要用于补全类 结构体 函数 成员
@@ -200,12 +202,13 @@ let g:OmniCpp_NamespaceSearch = 2
 " =====================================================
 " 设置XPT 主要用于生成代码段 
 " =====================================================
-let g:xptemplate_key =  '<leader><Tab>'
+"let g:xptemplate_key =  '<leader><Tab>'
+"Ctrl-\"
 
 " =====================================================
 " 设置code_complete 主要用于补全函数参数 
 " =====================================================
-let g:completekey = "<Tab>"   "hotkey
+""let g:completekey ="<Tab>"
 
 " =====================================================
 " 设置SuperTAB 主要用于补全函数参数 <S-tab> 
@@ -284,45 +287,22 @@ function! Do_CsTag()
 	endif
 endf
 
-"tag浏览设置"
-func! TagConf()
-	if ( &filetype == "c" )
-		let g:Tlist_Inc_Winwidth=0            " 禁止自动改变当前Vim窗口的大小
-		let g:Tlist_Use_Right_Window=1        " 把方法列表放在屏幕的右侧
-		let g:Tlist_File_Fold_Auto_Close=1    " 让当前不被编辑的文件的方法列表自动折叠起来， 这样可以节约一些屏幕空间
-		let g:Tlist_Auto_Highlight_Tag = 1    " 是否高亮显示当前标签
-		let g:Tlist_Auto_Open = 0             " 自动打开Tlist
-		let g:Tlist_Auto_Update = 1           " 自动更新Tlist
-		let g:Tlist_Close_On_Select = 0       " 选择标签或文件后是否自动关闭标签列表窗口
-		let g:Tlist_Compact_Format = 1        " 压缩方式
-		let g:Tlist_Display_Prototype = 0     " 是否在标签列表窗口用标签原型替代标签名
-		let g:Tlist_Display_Tag_Scope = 1     " 在标签名后是否显示标签有效范围
-		let g:Tlist_Enable_Fold_Column = 0    " 不显示折叠树
-		let g:Tlist_Exit_OnlyWindow = 1       " 关闭VIM同时关闭Tlist
-		let g:Tlist_Show_One_File = 1
-    let g:Tlist_GainFocus_On_ToggleOpen = 1 " 为1则使用TlistToggle打开标签列表窗口后会获焦点至于标签列表窗口；为0则taglist打开后焦点仍保持在代码窗口
-		let g:tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'
-		exec "TlistToggle"
-  else
-		exec "TagbarToggle"
-		"let g:tagbar_foldlevel = 2          " 设置tagbar的折叠级别
-	endif
-endfunc
-
-let Tlist_Use_Right_Window=1        " 把方法列表放在屏幕的右侧
 if filereadable("../tags") 
   set tags+=../tags
 else
-  set tags+=./tags,tags
+  if filereadable("./tags") 
+    set tags+=./tags,tags
+  endif
 endif
 "cscope"
 if (executable('cscope') && has("cscope") )
   silent! execute "cs kill -1"
-  if ( filereadable("../cscope.out") )
+  if filereadable("../cscope.out")
     set nocsverb
     exec "cs add ../cscope.out"
     set csverb
   else
+    if filereadable("./cscope.out")
     set nocsverb
     exec "cs add cscope.out"
     set csverb
@@ -349,7 +329,7 @@ nmap <leader>se :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>sf :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <leader>si :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <leader>sd :cs find d <C-R>=expand("<cword>")<CR><CR>
-au bufwritepost *.c,*.cpp,*.h,*.java,*.html,*.js,*.php call Do_CsTag()  " 修改后自动更新tags cscope.out
+au BufWritePost *.c,*.cpp,*.h,*.java,*.html,*.js,*.php call Do_CsTag()  " 修改后自动更新tags cscope.out
 
 map <F2> :call Do_CsTag()<cr>:redraw!<cr>
 
@@ -366,6 +346,30 @@ map <F3> :WMToggle<cr>
 " =====================================================
 "<F4> 打开tag浏览器 默认为Taglist  面向对象语言是Tagbar  面向过程语言是Taglist
 " =====================================================
+"tag浏览设置"
+func! TagConf()
+	if ( &filetype == "c" )
+		let g:Tlist_Inc_Winwidth=0            " 禁止自动改变当前Vim窗口的大小
+		let g:Tlist_Use_Right_Window=1        " 把方法列表放在屏幕的右侧
+		let g:Tlist_File_Fold_Auto_Close=1    " 让当前不被编辑的文件的方法列表自动折叠起来， 这样可以节约一些屏幕空间
+		let g:Tlist_Auto_Highlight_Tag = 1    " 是否高亮显示当前标签
+		let g:Tlist_Auto_Open = 0             " 自动打开Tlist
+		let g:Tlist_Auto_Update = 1           " 自动更新Tlist
+		let g:Tlist_Close_On_Select = 0       " 选择标签或文件后是否自动关闭标签列表窗口
+		let g:Tlist_Compact_Format = 1        " 压缩方式
+		let g:Tlist_Display_Prototype = 0     " 是否在标签列表窗口用标签原型替代标签名
+		let g:Tlist_Display_Tag_Scope = 1     " 在标签名后是否显示标签有效范围
+		let g:Tlist_Enable_Fold_Column = 0    " 不显示折叠树
+		let g:Tlist_Exit_OnlyWindow = 1       " 关闭VIM同时关闭Tlist
+		let g:Tlist_Show_One_File = 1
+    let g:Tlist_GainFocus_On_ToggleOpen = 1 " 为1则使用TlistToggle打开标签列表窗口后会获焦点至于标签列表窗口；为0则taglist打开后焦点仍保持在代码窗口
+		let g:tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'
+		exec "TlistToggle"
+  else
+		exec "TagbarToggle"
+		"let g:tagbar_foldlevel = 2          " 设置tagbar的折叠级别
+	endif
+endfunc
 map <F4> :call TagConf()<cr>
 
 " =====================================================
@@ -407,44 +411,33 @@ if has('unix')
 endif
 
 " =====================================================
-"<F8>   checksyntax
+"<F8> ConqueTerm配置
+" =====================================================
+"let g:ConqueTerm_ToggleKey = '<F8>'
+
+
+" =====================================================
+"<F10> project配置
+" =====================================================
+let g:groj_flags='scL'	"当选择文件时 显示其路径
+nmap <silent><F10> <PLUG>ToggleProject
+
+
+" =====================================================
+"<F12>   checksyntax
 " 设置Synax info  打开<leader>l
 " =====================================================
-let g:checksyntax_key_single = '<C-F8>'   
-let g:checksyntax_key_all = '<F8>'
+let g:checksyntax_key_single = '<C-F12>'   
+let g:checksyntax_key_all = '<F12>'
 
 let g:syntastic_check_on_open = 1
 "When set to 1 the cursor will always jump to the first issue detected.
 let g:syntastic_auto_jump = 0
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 
-" =====================================================
-"<F10> project配置
-" =====================================================
-let g:groj_flags='scL'							"当选择文件时 显示其路径
-nmap <silent><F10> <PLUG>ToggleProject
-
-" =====================================================
-" Doxygen 
-" =====================================================
-"添加注释快捷键 默认行末注释\cl 默认代码成为注释\c*
-"为了生成doxygen文档 统一采用doxygen注释方法
-",dfh 生成文件头信息
-",dol 生成跨行注释
-",dos 生成单行注释
-",dof 生成函数注释
-",doc 生成结构体注释
-let g:Doxy_FormatDate= '%D'
-let g:Doxy_FormatTime= '%T'
-let g:Doxy_FormatYear= '%Y'
-imap <leader>dfh <ESC>:DoxyFILEHeader<cr>
-imap <leader>dbl <ESC>:DoxyBlockLong<cr>
-imap <leader>dbs <ESC>:DoxyBlockShort<cr>
-imap <leader>dfc <ESC>:DoxyFunction<cr> 
-imap <leader>dcl <ESC>:DoxyClass<cr>
 
 " ==================================================
 " VimWiki 配置
@@ -542,8 +535,6 @@ Bundle 'plasticboy/vim-markdown'
 
 Bundle 'mattn/emmet-vim'
 
-Bundle 'DoxyGen-Syntax'
-
 Bundle 'LargeFile'
 
 Bundle 'lookupfile'
@@ -574,8 +565,6 @@ Bundle 'a.vim'
 
 Bundle 'bufexplorer.zip'
 
-Bundle 'doxygen-support.vim'
-
 Bundle 'FencView.vim'
 
 Bundle 'fontsize.vim'
@@ -595,6 +584,9 @@ Bundle 'jkeylu/vimdoc_cn'
 Bundle 'Valloric/ListToggle'
 
 Bundle 'scrooloose/syntastic'
+
+Bundle 'turing1988/Conque-Shell'
+
 filetype plugin indent on
 "mark.vim
 " vim: set et sw=4 ts=4 sts=4 fdm=marker ft=vim ff=unix fenc=utf8:
