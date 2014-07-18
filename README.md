@@ -51,74 +51,54 @@ In Windows , open the `CMD.EXE` , run
     ./vimupate.bat
 
 --- 
-#### Keybind
- 'gmarik/vundle'
+#### Plugin 
+'gmarik/vundle'
 
- 'tomtom/checksyntax_vim'
+'scrooloose/nerdtree'
 
- 'scrooloose/nerdtree'
+'blak3mill3r/c.vim'
 
- 'blak3mill3r/c.vim'
+'plasticboy/vim-markdown'
 
- 'turing1988/ColorSamplerPack'
+'mattn/emmet-vim'
 
- 'ervandew/supertab'
+'xptemplate'
 
- 'plasticboy/vim-markdown'
+'cecutil'
 
- 'mattn/emmet-vim'
+'genutils'
 
- 'LargeFile'
+'code_complete'
 
- 'lookupfile'
+'Tagbar'
 
- 'xptemplate'
+'vimwiki'
 
- 'cecutil'
+'winmanager'
 
- 'genutils'
+'OmniCppComplete'
 
- 'calendar.vim--Matsumoto'
+'bufexplorer.zip'
 
- 'code_complete'
+'adah1972/fencview'
 
- 'Color-Scheme-Explorer'
+'surround.vim'
 
- 'Mark'
+'taglist.vim'
 
- 'Tagbar'
+'vimcn/vimwiki.vim.cnx'
 
- 'vimwiki'
+'jkeylu/vimdoc_cn'
 
- 'winmanager'
+'Valloric/ListToggle'
 
- 'OmniCppComplete'
+'scrooloose/syntastic'
 
- 'a.vim'
+'turing1988/Conque-Shell'
 
- 'bufexplorer.zip'
+'Lokaltog/vim-powerline'
 
- 'FencView.vim'
-
- 'fontsize.vim'
-
- 'surround.vim'
-
- 'taglist.vim'
-
- 'vimcn/vimwiki.vim.cnx'
-
- 'vimcn/tagbar.cnx'
-
- 'vimcn/taglist.vim.cnx'
-
- 'jkeylu/vimdoc_cn'
-
- 'Valloric/ListToggle'
-
- 'scrooloose/syntastic'
-
- 'turing1988/Conque-Shell'
+'Auto-Pairs'
 
 ###More
 
