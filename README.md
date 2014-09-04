@@ -96,8 +96,6 @@ In Windows , open the `CMD.EXE` , run
 
 'turing1988/Conque-Shell'
 
-'Lokaltog/vim-powerline'
-
 'Auto-Pairs'
 
 ###More

@@ -61,10 +61,6 @@ then
         cp -rf patch/dictionary.vim $PATCH4 
     fi
     
-    echo -e 'Check installed, and change color to wombat256!'
-    
-    vim -c "%s/default/wombat256/g|w!" $VIMRC
-    
     echo -e  "Deploy finished , You can run this script to update!"
 
     cd $CURDIR

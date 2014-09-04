@@ -79,23 +79,19 @@ set bsdir=buffer    " 设定文件浏器目录为当前目录
 au GuiEnter * set t_vb= "关闭beep
 au BufEnter * silent! lcd %:p:h
 filetype plugin indent on " 打开文件类型检测
-func! ShortTabLabel() "去除当前所编辑文件的路径信息，只保留文件名
-  let bufnrlist = tabpagebuflist(v:lnum)
-  let label = bufname(bufnrlist[tabpagewinnr(v:lnum) -1])
-  let filename = fnamemodify(label, ':t')
-  return filename
-endfunc
 "set foldcolumn=2    " 设置折叠窗口的宽度
 "set list           " 显示tab和空格
 "set textwidth=100  " 设置每行100个字符自动换行，加上换行符
 "set cursorcolumn   " 高亮光标所在列
 "set autochdir       " 自动切换当前目录为当前文件所在的目录
 "set binary					"维持文件末尾原样 不自动添加空行
+"autocmd VimLeave * mksession! Session.vim
 "set noendofline binary "避免在文件末尾添加空行
-"set guitablabel=%{ShortTabLabel()}
-"set stl=\ [File]\ %F%m%r%h%y[%{&fileformat},%{&fileencoding}]\ %w\ [PATH]\ %{getcwd()}%h\ %=\ [line]%l/%L\ [col]%c/%V
-"au FileType c,cpp set cc=81 "高亮第81列
-"au VimLeave * mksession! Session.vim
+set stl=%{getcwd()}\\%f\ \%m%r%w%h%y[%{&ff}][%{&fenc}]\ %=\ %l/%L\ \%c/%v\ \%p%%
+highlight StatusLine guifg=SlateBlue guibg=Yellow 
+highlight StatusLineNC guifg=Gray guibg=White
+au InsertEnter * hi StatusLine guibg=#818D29 guifg=#FCFCFC gui=none
+au InsertLeave * hi StatusLine guibg=Yellow guifg=SlateBlue gui=none
 
 " =====================================================
 " 多语言环境 默认为 UTF-8 编码
@@ -129,8 +125,10 @@ endif
 "设置','为leader快捷键
 let mapleader = ","
 let g:mapleader = ","
+"设置快速保存和退出
 nmap <leader>s :w!<cr>			
 nmap <leader>w :wq!<cr>		
+"打开与关闭标签
 nmap <leader>tt :tabnew .<cr>
 nmap <leader>tc :tabclose<cr>
 
@@ -153,7 +151,7 @@ let g:Templates_MapInUseWarn = 0		"cvim的配置
 let g:OmniCpp_MayCompleteDot = 1 " autocomplete with .
 let g:OmniCpp_MayCompleteArrow = 1 " autocomplete with ->
 let g:OmniCpp_MayCompleteScope = 1 " autocomplete with ::
-let g:OmniCpp_SelectFirstItem = 2 " select first item (but don't insert)
+let g:OmniCpp_SelectFirstItem = 1 " 0 don't first 1 insert first item 2 select first item (but don't insert)
 let g:OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
 let g:OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype in popup window
 let g:OmniCpp_GlobalScopeSearch=1 " enable the global scope search
@@ -400,6 +398,9 @@ let g:vimwiki_list=[privatewiki,sharewiki]					" 注册vimwiki
 ",vh 快速转化为html .vb快速转化后浏览器浏览 ,va 所有转化为html
 nmap <leader>vh :Vimwiki2HTML<cr>								
 nmap <leader>vb :Vimwiki2HTMLBrowse<cr>
+"map <Leader>wd <Plug>VimwikiDeleteLink             " 删除当前页
+"map <Leader>rr <Plug>VimwikiRenameLink             " 更改当前页的名称
+"map <leader>wq <Plug>VimwikiToggleListItem					" 对[]中的选中切换
 au FileType vimwiki set ff=unix fenc=utf-8 noswapfile nobackup
 au FIleType vimwiki set cursorcolumn                " wiki页面使用列高亮 便于列对齐
 
@@ -447,12 +448,6 @@ let g:user_zen_expandabbr_key = '<Tab>'
 let g:user_emmet_leader_key ="<C-e>"
 
 " ==================================================
-" powerline配置
-" ==================================================
-"let g:Powerline_symbols ='fancy'
-au BufEnter * PowerlineReloadColorscheme
-
-" ==================================================
 " 插件管理
 " ==================================================
 set nocompatible
@@ -482,7 +477,6 @@ Bundle 'jkeylu/vimdoc_cn'
 Bundle 'Valloric/ListToggle'
 Bundle 'scrooloose/syntastic'
 Bundle 'turing1988/Conque-Shell'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'Auto-Pairs'
 call vundle#end()
 filetype plugin indent on
